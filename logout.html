@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title id="title"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="theme-color" content="#3B5998" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/reset.css">
+</head>
+
+<body>
+<script language="JavaScript">
+
+    function openLogin() {
+	if (window.name != 'hotspot_logout') return true;
+	open('$(link-login)', '_blank', '');
+	window.close();
+	return false;
+    }
+
+</script>
+<!-- container -->
+<div class="container">
+    <div class="main">
+        <div class="box">
+            <div style="margin-top:30px; text-align: center;"> <img src="img/manred.svg" alt="manred" width="100"><h3 id="user">$(username)</h3></div><br>
+            <b style="margin-top:20px;">Anda telah keluar dari hotspot! <br><br><i>Terima kasih telah menggunakan layanan internet hotspot kami</i></b> <br><br>
+        </div>
+        <div class="harga">
+            <div class="card bg9"><td align="right" style="width: 40%;">IP Address  &#128187;</td><td> $(ip)</td></div>
+            <div class="card bg8"><td align="right">MAC Address &#128241;</td><td> $(mac)</td></div>
+            <div class="card bg7"><td align="right">Upload  &#8648;</td><td> $(bytes-in-nice)</td></div>
+            <div class="card bg6"><td align="right">Download  &#8650;</td><td> $(bytes-out-nice)</td></div>
+            <div class="card bg5"><td align="right">Terkoneksi  &#127758;</td><td> $(uptime)</td></div>
+        $(if remain-bytes-total)
+        <div class="card bg4"><td align="right">Sisa Kuota  &#128344;</td><td> $(remain-bytes-total-nice)</td></div>
+        $(endif)
+        $(if session-time-left)
+        <div class="card bg3"><td align="right">Sisa Waktu  &#128344;</td><td> $(session-time-left)</td></div>
+        $(endif)
+        </div>
+<br><br>
+        <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+                <button class="log-in" type="submit"> Login Kembali</button>
+        </form>
+        </div>
+        <!-- Jam -->
+<div class="jam">
+    <p class="tanggalwaktu"><span id="tanggalwaktu"></span></p>
+        <script>
+            var tw = new Date();
+            if (tw.getTimezoneOffset() == 0) (a=tw.getTime() + ( 7 *60*60*1000))
+            else (a=tw.getTime());
+            tw.setTime(a);
+            var tahun= tw.getFullYear ();
+            var hari= tw.getDay ();
+            var bulan= tw.getMonth ();
+            var tanggal= tw.getDate ();
+            var hariarray=new Array("Minggu,","Senin,","Selasa,","Rabu,","Kamis,","Jum'at,","Sabtu,");
+            var bulanarray=new Array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","Nopember","Desember");
+            document.getElementById("tanggalwaktu").innerHTML = hariarray[hari]+" "+tanggal+" "+bulanarray[bulan]+" "+tahun+" Jam " + ((tw.getHours() < 10) ? "0" : "") + tw.getHours() + ":" + ((tw.getMinutes() < 10)? "0" : "") + tw.getMinutes() + (" W.I.B ");
+        </script>
+</div>
+<!-- Jam -->
+</div>
+<!-- end container -->
+
+<!-- footer start // Tolong Jangan Rubah atau Hapus Bagian Ini-->
+<div class="footer" >
+    <div class="copy">
+          <h3>Thanks to<br><b>&#10084;</b> Dudul</h3>
+      </div>
+      <div class="socmed">
+          <ul>
+              <li>Copyright &copy; &#187; <script type="text/javascript">new Date().getFullYear()>2016&&document.write(new Date().getFullYear());</script><a href="https://duduls.my.id" id="OpenAccess" target="_blank">OpenAccess</a></li>
+              <li>Contact Admin :&#187;<a href="https://t.me/dudulrealnofek" id="Dudul" target="_blank">Dudul</a></li>
+          </ul>
+    </div>
+</div>
+<script src="md5.js"></script>
+<!-- End Footer -->
+<script type="text/javascript">
+	document.getElementById('title').innerHTML = window.location.hostname + " > logout";
+</script>
+</body>
+</html>

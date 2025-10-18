@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title id="title">Login Page OpenAccess</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="theme-color" content="#3B5998" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+
+</head>
+
+<body>
+        $(if chap-id)
+        <form name="sendin" action="$(link-login-only)" method="post">
+            <input type="hidden" name="username" />
+            <input type="hidden" name="password" />
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+        </form>
+        
+        <script type="text/javascript" src="md5.js"></script>
+        <script type="text/javascript">
+            function doLogin() {
+                document.sendin.username.value = document.login.username.value;
+                document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value +
+                    '$(chap-challenge)');
+                document.sendin.submit();
+                return false;
+            }
+        </script>
+        $(endif)
+<div class="container">
+    <!-- Header -->
+    <div class="header cf">
+        <div class="logo">
+            <img src="img/logo.png" alt="IST Hotspot" width="80">
+        </div>
+        <div class="desc">
+            <h3><sup>&#8482;</sup> Open Access</h3>
+            <p>" Layanan Internet Gratis Tanpa Batasan Kuota "</p>
+            <marquee >"Selamat datang di "Open Access", Nikmati layanan internet gratis tanpa batas. Gunakan dengan bijak!. Jika ada masalah silahkan hubungi admin". </marquee>
+        </div>
+    </div>
+    <!-- Header End-->
+    <!-- Start Main -->
+    <div id="main" class="main">
+        <div class="box">
+            <button id="btnvrc" class="btn-top bg1" onclick="voucher();"> Voucher</button>
+            <button id="btnmem" class="btn-top bg2" onclick="member();"> Member</button>
+            <button id="qr" class="btn-top bg3";"> QR Code</button>
+        </div>
+            <div class="box" id="infologin">
+            </div>
+            <form autocomplete="off" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                <input type="hidden" name="dst" value="$(link-orig)" />
+                <input type="hidden" name="popup" value="true" />
+                <input class="username" name="username" type="text" value="$(username)" />
+                <input class="password" name="password" placeholder="Password" type="hidden" />
+
+                <button class="log-in" type="submit"> Login</button>
+
+            </form>
+
+    <!-- Data Paket Voucher -->
+    <div class="warn">
+        <p>" Silahkan Akses Dengan Kode : free-access "</p>
+        <br>
+        <h1>" Jika Ada Masalah Silahkan Hubungi Mimin :) "</h1>
+    </div>
+	<br>
+	<br>
+	
+	
+    <div class="harga">
+        <div class="card bg4">Free</div>
+        <div class="card bg5">Simple</div>
+        <div class="card bg6">Fast</div>
+        <div class="card bg1">Secure</div>
+        <div class="card bg2">Unlimited</div>
+        <div class="card bg7">Stable</div>
+        <div class="card bg8">24/7 Online</div>
+        </div>
+    </div>
+    <!-- End Data Paket Voucher -->
+    <!-- Jam -->
+<div class="jam">
+        <p class="tanggalwaktu"><span id="tanggalwaktu"></span></p>
+            <script>
+                var tw = new Date();
+                if (tw.getTimezoneOffset() == 0) (a=tw.getTime() + ( 7 *60*60*1000))
+                else (a=tw.getTime());
+                tw.setTime(a);
+                var tahun= tw.getFullYear ();
+                var hari= tw.getDay ();
+                var bulan= tw.getMonth ();
+                var tanggal= tw.getDate ();
+                var hariarray=new Array("Minggu,","Senin,","Selasa,","Rabu,","Kamis,","Jum'at,","Sabtu,");
+                var bulanarray=new Array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","Nopember","Desember");
+                document.getElementById("tanggalwaktu").innerHTML = hariarray[hari]+" "+tanggal+" "+bulanarray[bulan]+" "+tahun+" Jam " + ((tw.getHours() < 10) ? "0" : "") + tw.getHours() + ":" + ((tw.getMinutes() < 10)? "0" : "") + tw.getMinutes() + (" W.I.B ");
+            </script>
+    </div>
+    <!-- Jam -->
+    <!-- End Main -->
+    </div>
+    <!-- End Container -->
+  <!-- footer start // Tolong Jangan Rubah atau Hapus Bagian Ini-->
+  <div class="footer" >
+      <div class="copy">
+          <h3>Thanks to<br><b>&#10084;</b> Dudul</h3>
+      </div>
+      <div class="socmed">
+          <ul>
+              <li>Copyright &copy; &#187; <script type="text/javascript">new Date().getFullYear()>2016&&document.write(new Date().getFullYear());</script><a href="https://duduls.my.id" id="OpenAccess" target="_blank">OpenAccess</a></li>
+              <li>Contact Admin :&#187;<a href="https://t.me/dudulrealnofek" id="Dudul" target="_blank">Dudul</a></li>
+          </ul>
+      </div>
+  </div>
+<!-- End Footer -->
+<script src="md5.js"></script>
+</body>
+</html>

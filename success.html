@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title id="title"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="theme-color" content="#3B5998" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/reset.css">
+$(if refresh-timeout)
+<script>
+	setTimeout(function(){
+	location.href = './status';
+	},4000)
+</script>
+$(endif)
+</head>
+<body>
+<!-- container -->
+<div class="container">
+	<div class="main">
+
+		$(if login-by == 'trial')
+				<div style="margin-top:20px; text-align: center;"><h3>Welcome</h3><img src="img/manblue.svg" alt="manblue" width="100"> <h3>trial user</h3></div><br>
+			$(elif login-by != 'mac')
+				<div style="margin-top:20px; text-align: center;"><h3>Welcome</h3><img src="img/manblue.svg" alt="manblue" width="100"><br> <h3 id="user">$(username)</h3></div><br>
+		$(endif)
+		<h3>Anda telah terhubung di jaringan <br /><b id="dname"></b></h3>
+		<br><br>
+		<button class="log-in" onclick="window.location='./status'"> Check Status</buton>
+		</div>
+		<!-- Jam -->
+<div class="jam">
+	<p class="tanggalwaktu"><span id="tanggalwaktu"></span></p>
+		<script>
+			var tw = new Date();
+			if (tw.getTimezoneOffset() == 0) (a=tw.getTime() + ( 7 *60*60*1000))
+			else (a=tw.getTime());
+			tw.setTime(a);
+			var tahun= tw.getFullYear ();
+			var hari= tw.getDay ();
+			var bulan= tw.getMonth ();
+			var tanggal= tw.getDate ();
+			var hariarray=new Array("Minggu,","Senin,","Selasa,","Rabu,","Kamis,","Jum'at,","Sabtu,");
+			var bulanarray=new Array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","Nopember","Desember");
+			document.getElementById("tanggalwaktu").innerHTML = hariarray[hari]+" "+tanggal+" "+bulanarray[bulan]+" "+tahun+" Jam " + ((tw.getHours() < 10) ? "0" : "") + tw.getHours() + ":" + ((tw.getMinutes() < 10)? "0" : "") + tw.getMinutes() + (" W.I.B ");
+		</script>
+</div>
+<!-- Jam -->
+</div>
+<!-- end container -->
+<!-- footer start // Tolong Jangan Rubah atau Hapus Bagian Ini-->
+<div class="footer" >
+	<div class="copy">
+          <h3>Thanks to<br><b>&#10084;</b> Dudul</h3>
+      </div>
+      <div class="socmed">
+          <ul>
+              <li>Copyright &copy; &#187; <script type="text/javascript">new Date().getFullYear()>2016&&document.write(new Date().getFullYear());</script><a href="https://duduls.my.id" id="OpenAccess" target="_blank">OpenAccess</a></li>
+              <li>Contact Admin :&#187;<a href="https://t.me/dudulrealnofek" id="Dudul" target="_blank">Dudul</a></li>
+          </ul>
+	</div>
+</div>
+<!-- End Footer -->
+<script src="md5.js"></script>
+<script type="text/javascript">
+	document.getElementById('title').innerHTML = window.location.hostname + " > success";	
+    document.getElementById('dname').innerHTML = window.location.hostname;	
+</script>
+</body>
+</html>
